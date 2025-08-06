@@ -31,5 +31,6 @@ USER node
 ENV NODE_FUNCTION_ALLOW_BUILTIN=*
 ENV NODE_FUNCTION_ALLOW_EXTERNAL=*
 
-# Start N8N
-CMD ["n8n", "start"]
+# Use the same entrypoint as the base n8n image
+ENTRYPOINT ["tini", "--", "/usr/local/bin/docker-entrypoint.sh"]
+CMD ["n8n"]
