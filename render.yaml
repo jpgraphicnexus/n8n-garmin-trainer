@@ -4,8 +4,6 @@ services:
     runtime: docker
     region: oregon
     plan: free
-    buildCommand: docker build -t n8n-garmin .
-    startCommand: n8n start
     envVars:
       - key: N8N_HOST
         value: 0.0.0.0
