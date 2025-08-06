@@ -14,8 +14,8 @@ services:
       - key: N8N_PROTOCOL
         value: http
       - key: GARMIN_EMAIL
-        value: YOUR_GARMIN_EMAIL_HERE
+        value: jackpauley999@gmail.com
       - key: GARMIN_PASSWORD
-        value: YOUR_GARMIN_PASSWORD_HERE
+        value: Bodospeer22
       - key: WEBHOOK_URL
         sync: false
