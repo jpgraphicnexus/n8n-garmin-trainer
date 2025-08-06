@@ -30,3 +30,6 @@ USER node
 # Allow N8N to use external modules
 ENV NODE_FUNCTION_ALLOW_BUILTIN=*
 ENV NODE_FUNCTION_ALLOW_EXTERNAL=*
+
+# Start N8N
+CMD ["n8n", "start"]
