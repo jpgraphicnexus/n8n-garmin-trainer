@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: n8n-garmin-trainer
+    runtime: docker
+    region: oregon
+    plan: free
+    buildCommand: docker build -t n8n-garmin .
+    startCommand: n8n start
+    envVars:
+      - key: N8N_HOST
+        value: 0.0.0.0
+      - key: N8N_PORT
+        value: 10000
+      - key: N8N_PROTOCOL
+        value: http
+      - key: GARMIN_EMAIL
+        value: YOUR_GARMIN_EMAIL_HERE
+      - key: GARMIN_PASSWORD
+        value: YOUR_GARMIN_PASSWORD_HERE
+      - key: WEBHOOK_URL
+        sync: false
