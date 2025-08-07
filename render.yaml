@@ -3,14 +3,16 @@ services:
     name: n8n-garmin-trainer
     runtime: docker
     region: oregon
-    plan: free
+    plan: starter  # or standard
     envVars:
       - key: N8N_HOST
         value: 0.0.0.0
       - key: N8N_PORT
         value: 10000
       - key: N8N_PROTOCOL
-        value: http
+        value: https
+      - key: N8N_EDITOR_BASE_URL
+        value: https://n8n-garmin-trainer.onrender.com
       - key: GARMIN_EMAIL
         value: jackpauley999@gmail.com
       - key: GARMIN_PASSWORD
