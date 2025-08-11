@@ -3,7 +3,11 @@ services:
     name: n8n-garmin-trainer
     runtime: docker
     region: oregon
-    plan: starter  # or standard
+    plan: starter
+    disk:
+      name: n8n-data
+      size: 1GB
+      mountPath: /home/node/.n8n
     envVars:
       - key: N8N_HOST
         value: 0.0.0.0
@@ -19,3 +23,35 @@ services:
         value: Bodospeer22
       - key: WEBHOOK_URL
         sync: false
+      # Memory optimization
+      - key: NODE_OPTIONS
+        value: --max-old-space-size=800
+      # Database configuration for persistent storage
+      - key: N8N_DATABASE_TYPE
+        value: sqlite
+      - key: N8N_DATABASE_SQLITE_DATABASE
+        value: /home/node/.n8n/database.sqlite
+      # Execution data management
+      - key: N8N_EXECUTIONS_MODE
+        value: queue
+      - key: N8N_EXECUTIONS_DATA_SAVE_ON_SUCCESS
+        value: none
+      - key: N8N_EXECUTIONS_DATA_SAVE_ON_ERROR
+        value: all
+      - key: N8N_EXECUTIONS_DATA_PRUNE
+        value: true
+      - key: N8N_EXECUTIONS_DATA_MAX_AGE
+        value: 24
+      - key: N8N_EXECUTIONS_DATA_PRUNE_MAX_COUNT
+        value: 10
+      # Performance settings
+      - key: N8N_LOG_LEVEL
+        value: warn
+      - key: N8N_METRICS
+        value: false
+      # Security settings
+      - key: N8N_SECURE_COOKIE
+        value: false
+      # Task runners (recommended)
+      - key: N8N_RUNNERS_ENABLED
+        value: true
