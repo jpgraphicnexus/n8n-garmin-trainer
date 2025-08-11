@@ -24,6 +24,9 @@ RUN pip install --no-cache-dir \
     requests \
     python-dateutil
 
+# Create the n8n data directory and set permissions
+RUN mkdir -p /home/node/.n8n && chown -R node:node /home/node/.n8n
+
 # Switch back to node user for security
 USER node
 
@@ -31,6 +34,8 @@ USER node
 ENV NODE_FUNCTION_ALLOW_BUILTIN=*
 ENV NODE_FUNCTION_ALLOW_EXTERNAL=*
 
-# Use the same entrypoint as the base n8n image
-ENTRYPOINT ["tini", "--", "/usr/local/bin/docker-entrypoint.sh"]
-CMD ["n8n"]
+# Set working directory
+WORKDIR /home/node
+
+# Expose port
+EXPOSE 5678
