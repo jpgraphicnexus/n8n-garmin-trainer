@@ -17,21 +17,22 @@ services:
         value: https
       - key: N8N_EDITOR_BASE_URL
         value: https://n8n-garmin-trainer.onrender.com
-      - key: GARMIN_EMAIL
-        value: jackpauley999@gmail.com
-      - key: GARMIN_PASSWORD
-        value: Bodospeer22
-      - key: WEBHOOK_URL
-        sync: false
-      # Memory optimization
-      - key: NODE_OPTIONS
-        value: --max-old-space-size=800
-      # Database configuration for persistent storage
+
+      # Hevy credentials (set in dashboard if you prefer)
+      - key: HEVY_EMAIL
+        value: your@email.com
+      - key: HEVY_PASSWORD
+        value: your_password
+      - key: HEVY_OUT
+        value: /home/node/.n8n/hevy
+
+      # SQLite on disk for stability
       - key: N8N_DATABASE_TYPE
         value: sqlite
       - key: N8N_DATABASE_SQLITE_DATABASE
         value: /home/node/.n8n/database.sqlite
-      # Execution data management
+
+      # Execution retention to save memory
       - key: N8N_EXECUTIONS_MODE
         value: queue
       - key: N8N_EXECUTIONS_DATA_SAVE_ON_SUCCESS
@@ -44,14 +45,11 @@ services:
         value: 24
       - key: N8N_EXECUTIONS_DATA_PRUNE_MAX_COUNT
         value: 10
-      # Performance settings
-      - key: N8N_LOG_LEVEL
-        value: warn
-      - key: N8N_METRICS
-        value: false
-      # Security settings
-      - key: N8N_SECURE_COOKIE
-        value: false
-      # Task runners (recommended)
+
+      # Node memory headroom for starter plan
+      - key: NODE_OPTIONS
+        value: --max-old-space-size=800
+
+      # Optional: enable runners (recommended by n8n)
       - key: N8N_RUNNERS_ENABLED
         value: true
