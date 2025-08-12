@@ -20,9 +20,9 @@ services:
 
       # Hevy credentials (set in dashboard if you prefer)
       - key: HEVY_EMAIL
-        value: your@email.com
+        value: jp@graphicnexus.uk
       - key: HEVY_PASSWORD
-        value: your_password
+        value: Bodospeer22
       - key: HEVY_OUT
         value: /home/node/.n8n/hevy
 
